@@ -18,14 +18,18 @@ import {
 } from '@/components/ui/form'
 import {Input} from '../ui/input'
 import {Button} from '../ui/button'
+import toast from 'react-hot-toast'
+import useUser from '@/hooks/use-user'
+import userServices from '@/api/services/user-services'
 
 const formSchema = z.object({
-  username: z.string().min(8),
-  password: z.string().min(8),
+  username: z.string().min(1),
+  password: z.string().min(1),
 })
 
 const LoginModal = () => {
   const loginModal = useLoginModal()
+  const {setUserLogged} = useUser()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,7 +42,17 @@ const LoginModal = () => {
   const isLoading = form.formState.isSubmitting
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    console.log(data)
+    try {
+      const result = await userServices.login(data)
+      if (result.status === 200) {
+        toast.success('Login successfully!')
+        setUserLogged(result.data.result)
+        loginModal.onClose()
+        form.reset()
+      }
+    } catch (error) {
+      toast.error('Login failed!')
+    }
   }
 
   return (

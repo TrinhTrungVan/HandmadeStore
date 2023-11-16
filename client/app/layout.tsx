@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import {Nunito} from 'next/font/google'
 import ModalProvider from '@/components/providers/modal-provider'
 import ToastProvider from '@/components/providers/toast-provider'
+import AuthProvider from '@/components/providers/auth-provider'
 import './globals.css'
 import {ScrollArea} from '@/components/ui/scroll-area'
 
@@ -19,6 +20,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <body className={font.className}>
+        {/* <AuthProvider /> */}
         <ModalProvider />
         <ToastProvider />
         <ScrollArea>{children}</ScrollArea>

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import axiosClient from '../axiosClient'
 
 export type UserLoginData = {
@@ -23,7 +22,6 @@ export type UserUpdateData = {
 
 const userServices = {
   login: (data: UserLoginData) => {
-    console.log(process.env.BACKEND_URL)
     return axiosClient.post('/auth/login', data)
   },
   register: (data: UserRegisterData) =>

@@ -62,7 +62,7 @@ const RegisterModal = () => {
 
   return (
     <Modal open={registerModal.isOpen} onClose={registerModal.onClose}>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full min-w-[400px]">
         <Heading
           title="Welcome to KiriStore"
           description="Create an account!"

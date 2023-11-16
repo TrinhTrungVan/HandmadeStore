@@ -51,13 +51,14 @@ const LoginModal = () => {
         form.reset()
       }
     } catch (error) {
+      console.log(error)
       toast.error('Login failed!')
     }
   }
 
   return (
     <Modal open={loginModal.isOpen} onClose={loginModal.onClose}>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full min-w-[400px]">
         <Heading title="Welcome back" description="Login to your account!" />
         <Form {...form}>
           <form

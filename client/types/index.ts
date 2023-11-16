@@ -21,6 +21,8 @@ export type Product = {
   category: Category
   size: Size
   color: Color
+
+  createdAt: any
 }
 
 export type Category = {
@@ -37,7 +39,7 @@ export type Size = {
 export type Color = {
   id: string
   name: string
-  code: string
+  value: string
 }
 
 export type OrderItem = {

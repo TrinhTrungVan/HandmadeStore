@@ -8,7 +8,7 @@ const HomePage = async () => {
   const products = await getProducts({isFeatured: true})
   return (
     <Container>
-      <div className="flex flex-col px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col mt-4 px-4 sm:px-6 lg:px-8">
         <ProductList items={products} />
         {/* <Loadmore /> */}
       </div>

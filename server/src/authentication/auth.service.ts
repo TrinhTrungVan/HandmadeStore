@@ -35,7 +35,13 @@ export class AuthService {
     }
 
     return {
-      token: this.jwtService.sign({username}),
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      isAdmin: user.isAdmin,
+      token: this.jwtService.sign({
+        username: user.username,
+      }),
     }
   }
 
@@ -52,6 +58,10 @@ export class AuthService {
     const user = await this.userService.createUser(newUser)
 
     return {
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      isAdmin: user.isAdmin,
       token: this.jwtService.sign({
         username: user.username,
       }),

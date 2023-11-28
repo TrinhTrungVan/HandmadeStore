@@ -4,9 +4,10 @@ import useCart from '@/hooks/use-cart'
 import {usePreviewModal} from '@/hooks/use-preview-modal'
 import {formatter} from '@/lib/utils'
 import {Product} from '@/types'
-import {Expand, ShoppingCart} from 'lucide-react'
+import {Expand, Heart, ShoppingCart} from 'lucide-react'
 import Image from 'next/image'
 import {useRouter} from 'next/navigation'
+import HeartButton from './heart-button'
 
 interface ProductCardProps {
   data: Product
@@ -43,6 +44,7 @@ const ProductCard = ({data}: ProductCardProps) => {
             alt={data.name}
             className="aspect-square object-cover rounded-xl"
           />
+          <HeartButton />
           <div className="flex items-center justify-center w-full space-x-2 opacity-0 group-hover:opacity-100 transition absolute bottom-8">
             <button className="rounded-full transition hover:scale-110 bg-white p-2">
               <Expand

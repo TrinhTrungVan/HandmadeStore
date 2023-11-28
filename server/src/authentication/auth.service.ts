@@ -39,6 +39,7 @@ export class AuthService {
       email: user.email,
       phone: user.phone,
       isAdmin: user.isAdmin,
+      imageUrl: user.imageUrl,
       token: this.jwtService.sign({
         username: user.username,
       }),
@@ -62,6 +63,7 @@ export class AuthService {
       email: user.email,
       phone: user.phone,
       isAdmin: user.isAdmin,
+      imageUrl: user.imageUrl,
       token: this.jwtService.sign({
         username: user.username,
       }),

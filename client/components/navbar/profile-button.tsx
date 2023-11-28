@@ -9,8 +9,10 @@ import Image from 'next/image'
 import useRegisterModal from '@/hooks/use-register-modal'
 import useLoginModal from '@/hooks/use-login-modal'
 import useUser from '@/hooks/use-user'
+import {useRouter} from 'next/navigation'
 
 const ProfileButton = () => {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
@@ -52,11 +54,20 @@ const ProfileButton = () => {
         {user && (
           <>
             <div className="font-bold p-2 rounded">{user.username}</div>
-            <div
-              // onClick={loginModal.onOpen}
-              className="cursor-pointer p-2 rounded transition hover:bg-zinc-100">
-              Profile
-            </div>
+            {!user.isAdmin && (
+              <>
+                <div
+                  onClick={() => router.push('/profile')}
+                  className="cursor-pointer p-2 rounded transition hover:bg-zinc-100">
+                  Profile
+                </div>
+                <div
+                  onClick={() => router.push('/favourite')}
+                  className="cursor-pointer p-2 rounded transition hover:bg-zinc-100">
+                  My Favourites
+                </div>
+              </>
+            )}
             <div
               onClick={setUserLogout}
               className="font-bold cursor-pointer p-2 rounded transition hover:bg-zinc-100 text-red-500">
